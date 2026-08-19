@@ -83,7 +83,7 @@ body{margin:0;font:16px Arial;color:#101c2b;line-height:1.6}*{box-sizing:border-
 /* Brighter service photos */
 .page-services .service-photo-shade{background:linear-gradient(90deg,rgba(5,13,22,.62),rgba(5,13,22,.38))!important}
 .page-services .service-card h3,.page-services .service-card p,.page-services .service-card li,.page-services .service-card .icon,.page-services .service-card .num{text-shadow:0 2px 5px rgba(0,0,0,.95),0 0 12px rgba(0,0,0,.8)}
-.page-services .service-card ul{background:rgba(5,13,22,.28);padding:8px 12px;border-radius:3px;backdrop-filter:blur(1px)}
+.page-services .service-card ul{background:rgba(5,13,22,.28);padding:8px 12px;border-radius:3px;-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
 
 /* Maximum photo visibility with high-contrast copy */
 .page-services .service-photo-shade{background:linear-gradient(90deg,rgba(5,13,22,.18),rgba(5,13,22,.06))!important}
@@ -105,6 +105,7 @@ body{margin:0;font:16px Arial;color:#101c2b;line-height:1.6}*{box-sizing:border-
   border:0!important;
   border-left:0!important;
   box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
   backdrop-filter:none!important;
 }
 .page-services .service-card h3,
@@ -334,6 +335,10 @@ body{margin:0;font:16px Arial;color:#101c2b;line-height:1.6}*{box-sizing:border-
 
 /* Final single-file page routing and shared finishing details */
 .site-view[hidden]{display:none!important}
+.site-view{display:none}
+.site-view[data-view="home"]{display:block}
+body:has(#why-us:target,#services:target,#process:target,#contact:target) .site-view[data-view="home"]{display:none}
+.site-view:target{display:block}
 .site-footer{background:#101c2b;color:#fff}
 .modal-open{overflow:hidden}
 .header nav a:focus-visible,
@@ -473,4 +478,128 @@ body{margin:0;font:16px Arial;color:#101c2b;line-height:1.6}*{box-sizing:border-
   .footer-brand-row{gap:10px}
   .footer-service-tree{gap:16px}
 }
+
+/* Final mobile-friendly pass */
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+img{max-width:100%}
+button,a,input,select,textarea{touch-action:manipulation}
+@media(max-width:700px){
+  .wrap{width:min(100% - 28px,1180px)}
+  .topbar .wrap{height:auto;min-height:42px;gap:8px;padding:6px 0}
+  .top-numbers{width:100%;justify-content:space-between;gap:8px}
+  .top-numbers a{white-space:nowrap}
+  .header{height:74px}
+  .logo-mark{padding:10px}
+  .logo b{font-size:15px}
+  .header .menu{display:flex;flex-direction:column;gap:5px;padding:12px;border:0;background:transparent}
+  .header .menu span{display:block;width:25px;height:2px;background:#101c2b}
+  .header nav{top:116px;max-height:calc(100vh - 116px);overflow-y:auto;box-shadow:0 18px 35px #0003}
+  .header nav a,.header nav button{width:100%;min-height:46px;display:flex;align-items:center;justify-content:center}
+  .page-hero{min-height:310px;padding:45px 0}
+  .page-hero h1{font-size:clamp(42px,13vw,62px)}
+  .page-hero p:last-child{font-size:16px}
+  .hero{padding:42px 0}
+  .hero-inner{width:100%}
+  .hero h1{font-size:clamp(44px,14vw,58px)}
+  .hero-copy{max-width:100%}
+  .actions{display:grid;grid-template-columns:1fr}
+  .actions .btn{justify-content:center;min-height:50px}
+  .trust{gap:8px 14px}
+  .company-layout{column-gap:0}
+  .company-heading h2{font-size:clamp(38px,12vw,52px)}
+  .company-since{max-width:100%;gap:12px}
+  .company-since span{font-size:13px}
+  .company-details{font-size:16px}
+  .company-details .integrity-statement{padding:16px}
+  .feature{min-height:0}
+  .about-reel{min-height:330px}
+  .feature-copy{padding:45px 20px}
+  .service-card{min-height:520px;padding:28px 20px}
+  .service-card h3{font-size:30px}
+  .process .steps{gap:12px}
+  .process .steps>div{padding:24px 20px}
+  .process .process-cta{margin-top:30px;padding:28px 18px}
+  .process-cta h2{font-size:38px}
+  .contact{padding-left:0;padding-right:0}
+  .official-estimate{width:100%;overflow:hidden}
+  .official-estimate input,.official-estimate select,.official-estimate textarea{font-size:16px}
+  .estimate-actions .btn{min-height:50px;justify-content:center}
+  .call-modal{padding:10px}
+  .call-box{width:100%;max-height:calc(100vh - 20px)}
+  .call-box h2{font-size:42px}
+  .call-box .call-number b,.call-box .office-hours b,.call-box .fax b{font-size:22px}
+  .footer-brand-row p{font-size:14px}
+  .footer-service-tree li{padding-left:12px;font-size:15px}
+  .site-footer .copyright{font-size:14px}
+}
+@media(max-width:380px){
+  .wrap{width:min(100% - 20px,1180px)}
+  .top-numbers{font-size:10px}
+  .logo small{font-size:7px}
+  .hero h1,.page-hero h1{font-size:40px}
+  .company-since strong{font-size:50px}
+  .check-grid{grid-template-columns:1fr!important}
+}
+
+/* Preserve the original full-screen Home presentation */
+.home-page{
+  height:100vh;
+  min-height:0;
+  overflow:hidden;
+  padding-bottom:0!important;
+}
+.home-page main{
+  height:calc(100vh - 120px);
+}
+.home-page .site-view[data-view="home"]{
+  height:100%;
+}
+.home-page .hero{
+  height:100%;
+  min-height:0;
+}
+.home-page .site-footer{
+  display:none!important;
+}
+@media(max-width:700px){
+  .home-page main{height:calc(100vh - 116px)}
+  .home-page .hero{padding:25px 0}
+  .home-page .hero-inner{padding-bottom:0}
+}
+
+/* Image fallbacks: work from both file:// and local/hosted web servers */
+[data-bg="assets/exterior-fence.png"]{background-image:url("assets/exterior-fence.png")}
+[data-bg="assets/exterior-porch.png"]{background-image:url("assets/exterior-porch.png")}
+[data-bg="assets/exterior-powerwash.png"]{background-image:url("assets/exterior-powerwash.png")}
+[data-bg="assets/exterior-window.png"]{background-image:url("assets/exterior-window.png")}
+[data-bg="assets/hero-carpentry.png"]{background-image:url("assets/hero-carpentry.png")}
+[data-bg="assets/hero-concrete.png"]{background-image:url("assets/hero-concrete.png")}
+[data-bg="assets/hero-construction.png"]{background-image:url("assets/hero-construction.png")}
+[data-bg="assets/hero-deck.png"]{background-image:url("assets/hero-deck.png")}
+[data-bg="assets/hero-flooring-tile.png"]{background-image:url("assets/hero-flooring-tile.png")}
+[data-bg="assets/hero-gutters.png"]{background-image:url("assets/hero-gutters.png")}
+[data-bg="assets/hero-masonry.png"]{background-image:url("assets/hero-masonry.png")}
+[data-bg="assets/hero-painting.png"]{background-image:url("assets/hero-painting.png")}
+[data-bg="assets/hero-remodeling.png"]{background-image:url("assets/hero-remodeling.png")}
+[data-bg="assets/hero-roofing.png"]{background-image:url("assets/hero-roofing.png")}
+[data-bg="assets/hero-siding.png"]{background-image:url("assets/hero-siding.png")}
+[data-bg="assets/hero-waterproofing.png"]{background-image:url("assets/hero-waterproofing.png")}
+[data-bg="assets/interior-bathroom.png"]{background-image:url("assets/interior-bathroom.png")}
+[data-bg="assets/interior-kitchen.png"]{background-image:url("assets/interior-kitchen.png")}
+[data-bg="assets/interior-marble.png"]{background-image:url("assets/interior-marble.png")}
+[data-bg="assets/interior-plaster.png"]{background-image:url("assets/interior-plaster.png")}
+[data-bg="assets/interior-tile.png"]{background-image:url("assets/interior-tile.png")}
+[data-bg="assets/masonry-brick.png"]{background-image:url("assets/masonry-brick.png")}
+[data-bg="assets/masonry-driveway.png"]{background-image:url("assets/masonry-driveway.png")}
+[data-bg="assets/masonry-pavers.png"]{background-image:url("assets/masonry-pavers.png")}
+[data-bg="assets/masonry-pointing.png"]{background-image:url("assets/masonry-pointing.png")}
+[data-bg="assets/masonry-steps.png"]{background-image:url("assets/masonry-steps.png")}
+[data-bg="assets/masonry-stucco.png"]{background-image:url("assets/masonry-stucco.png")}
+[data-bg="assets/roof-coating.png"]{background-image:url("assets/roof-coating.png")}
+[data-bg="assets/roof-flashing.png"]{background-image:url("assets/roof-flashing.png")}
+[data-bg="assets/roof-leak.png"]{background-image:url("assets/roof-leak.png")}
+[data-bg="assets/roof-rubber.png"]{background-image:url("assets/roof-rubber.png")}
+[data-bg="assets/roof-shingles.png"]{background-image:url("assets/roof-shingles.png")}
+[data-bg="assets/roof-skylight.png"]{background-image:url("assets/roof-skylight.png")}
 
