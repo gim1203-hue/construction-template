@@ -83,7 +83,7 @@ body{margin:0;font:16px Arial;color:#101c2b;line-height:1.6}*{box-sizing:border-
 /* Brighter service photos */
 .page-services .service-photo-shade{background:linear-gradient(90deg,rgba(5,13,22,.62),rgba(5,13,22,.38))!important}
 .page-services .service-card h3,.page-services .service-card p,.page-services .service-card li,.page-services .service-card .icon,.page-services .service-card .num{text-shadow:0 2px 5px rgba(0,0,0,.95),0 0 12px rgba(0,0,0,.8)}
-.page-services .service-card ul{background:rgba(5,13,22,.28);padding:8px 12px;border-radius:3px;backdrop-filter:blur(1px)}
+.page-services .service-card ul{background:rgba(5,13,22,.28);padding:8px 12px;border-radius:3px;-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
 
 /* Maximum photo visibility with high-contrast copy */
 .page-services .service-photo-shade{background:linear-gradient(90deg,rgba(5,13,22,.18),rgba(5,13,22,.06))!important}
@@ -105,6 +105,7 @@ body{margin:0;font:16px Arial;color:#101c2b;line-height:1.6}*{box-sizing:border-
   border:0!important;
   border-left:0!important;
   box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
   backdrop-filter:none!important;
 }
 .page-services .service-card h3,
